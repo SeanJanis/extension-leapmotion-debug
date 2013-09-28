@@ -9,7 +9,7 @@ playback without the device connected.
 ## Quick start
 
 Start by reading the Chrome Extension tutorial: 
-[http://developer.chrome.com/extensions/getstarted.html](Getting Started: Building a Chrome Extension)
+[Getting Started: Building a Chrome Extension](http://developer.chrome.com/extensions/getstarted.html)
 
 ## Helpful hints
 
