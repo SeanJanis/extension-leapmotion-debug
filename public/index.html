@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app.leapangular" ng-controller="MainCtrl">
+  <head>
+    <meta charset="utf-8">
+    <title>Leap Motion Sandbox (w/ AngularJS)</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 3.0 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/leapangular.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="header">
+          <h2 class="logo-header-text">Leap Motion Sandbox (w/ AngularJS)</h2>
+        </div>
+
+        <hr>
+
+        <!-- Main content block -->
+        <div class="container">
+
+        </div>
+
+        <div ng-view></div>
+
+        <hr>
+
+        <div class="footer-text">
+            <p>&copy; ACME Co., 2013</p>
+        </div>
+
+    </div>
+
+  </body>
+
+
+  <!-- The HTML5 shim, for IE6-8 support of HTML elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+      <script src="js/vendor/jquery.min.js"></script>
+      <script src="js/vendor/bootstrap.min.js"></script>
+      <script src="js/angular/lib/angular.js"></script>
+      <script src="js/angular/lib/angular-webstorage.js"></script>
+      <script src="js/vendor/leap.min.js"></script>
+      <script src="js/core/leap_handler.js"></script>
+      <script src="js/angular/app.js"></script>
+      <script src="js/angular/directives.js"></script>
+      <script src="js/angular/controllers/controllers.js"></script>
+      <script src="js/angular/controllers/c_sandbox.js"></script>
+      <script src="js/angular/routes.js"></script>
+
+</html>

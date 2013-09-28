@@ -1,0 +1,46 @@
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #E1F8FF;
+  color: #3A869C;
+}
+
+hr {
+    border: 0;
+    color: #f00;
+    background-color: #a9babf;
+    height: 2px;
+}
+
+.logo-header-text {
+    color: #45a6a3;
+    font-weight: bold;
+}
+
+.panel-inner-content {
+    width: 90%;
+    max-width: 750px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.canvas-sandbox {
+    height: 400px;
+    width: 100%;
+    border: 1px solid #3A869C;
+}
+
+.static-device-status {
+    color: #000000;
+}
+
+.dynamic-device-status {
+    color: #49a665;
+    text-align: center;
+    font-size: 40px;
+}
+
+.footer-text {
+    color: #45a6a3;
+}
+
