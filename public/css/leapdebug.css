@@ -1,7 +1,5 @@
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #E1F8FF;
+  background-color: rgba(225, 248, 255, 0.43);
   color: #3A869C;
 }
 
@@ -10,6 +8,7 @@ hr {
     color: #f00;
     background-color: #a9babf;
     height: 2px;
+    width: 300px;
 }
 
 .logo-header-text {
@@ -17,15 +16,18 @@ hr {
     font-weight: bold;
 }
 
+.panel-body {
+    padding: 0px;
+}
+
 .panel-inner-content {
     width: 90%;
     max-width: 750px;
-    padding: 15px;
     margin: 0 auto;
 }
 
 .canvas-sandbox {
-    height: 400px;
+    height: 250px;
     width: 100%;
     border: 1px solid #3A869C;
 }
@@ -37,7 +39,13 @@ hr {
 .dynamic-device-status {
     color: #49a665;
     text-align: center;
-    font-size: 40px;
+    font-size: 16px;
+}
+
+.dynamic-device-status-inactive {
+    color: #bbbbbb;
+    text-align: center;
+    font-size: 16px;
 }
 
 .footer-text {

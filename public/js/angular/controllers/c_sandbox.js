@@ -17,6 +17,7 @@ function SandboxPartialCtrl($scope, $timeout, $http) {
         _canvas.width = _canvas.clientWidth;
         _canvas.height = _canvas.clientHeight;
 
+
         _context = _canvas.getContext('2d');
         _lm = new Leap.Controller();
         _lmHandler = new LeapMotionHandler({
