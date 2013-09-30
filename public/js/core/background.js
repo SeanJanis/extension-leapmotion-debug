@@ -39,11 +39,3 @@ function onDeviceConnected() {
 function onDeviceDisconnected() {
     chrome.browserAction.setIcon({path: ICON_DEVICE_INACTIVE});
 }
-
-//
-// When the user clicks the LeapDebug icon, the status
-// icon is refreshed.
-//
-chrome.browserAction.onClicked.addListener(function() {
-    // Do nothing for now
-});

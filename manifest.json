@@ -1,14 +1,13 @@
 {
   "manifest_version": 2,
   "name": "LeapDebug",
-  "description": "Chrome extension for debugging and recording Leap Motion frame events.",
+  "description": "<Unofficial> Chrome extension for debugging and recording Leap Motion data.",
   "version": "0.1",
   "background": {
     "scripts": [
     	"public/js/vendor/leap.min.js",
     	"public/js/core/background.js"
-    ],
-    "persistent": false
+    ]
   },
   "icons": {"128": "public/img/icon128.png"},
   "browser_action": {
@@ -20,6 +19,6 @@
   	}
   },
   "permissions": [
-    "https://secure.flickr.com/"
+  	 "storage"
   ]
 }

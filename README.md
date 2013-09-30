@@ -34,7 +34,6 @@ This app was built using AngularJS, Bootstrap 3.0, Animate.css and LeapJs.
 ## TODOs / Future Versions
 - More granular output for Live Stats view (expand menus for showing 2d/3d coordinates)
 - Better HTML canvas drawing for Live Hand & Finger Tracking
-- Known issue with Chrome Extension becoming inactive, but not refreshing Leap Device status icon
 - End-to-end unit tests for leap_handler.js
 
 ## Authors

@@ -26,7 +26,6 @@ function LeapMotionHandler(params) {
     this._lastTime = new Date;
     this._timeElapsed = 0;
     this._frameCount = 0;
-    this.resetUIData();
 }
 
 LeapMotionHandler.prototype = {
@@ -38,6 +37,7 @@ LeapMotionHandler.prototype = {
             return;
         }
 
+        this.resetUIData();
         this._lm.on('ready', this.onReady.bind(this));
         this._lm.on('connect', this.onConnected.bind(this));
         this._lm.on('deviceConnected', this.onDeviceConnected.bind(this));

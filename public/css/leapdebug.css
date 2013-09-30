@@ -11,6 +11,24 @@ hr {
     width: 300px;
 }
 
+.div-center {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.btn-default:focus,
+.btn-default.active,
+.btn-default:active {
+    color: #ffffff;
+    background-color: #5bc0de;
+    border-color: #46b8da;
+}
+
+.btn-group-tabs {
+    margin: 0 auto;
+    text-align: center;
+}
+
 .logo-header-text {
     color: #45a6a3;
     font-weight: bold;
@@ -26,7 +44,7 @@ hr {
     margin: 0 auto;
 }
 
-.canvas-sandbox {
+.canvas-live-tracking {
     height: 250px;
     width: 100%;
     border: 1px solid #3A869C;

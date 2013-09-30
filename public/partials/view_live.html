@@ -1,5 +1,10 @@
 
-<div ng-controller="SandboxPartialCtrl" ng-init="init()">
+<div ng-controller="ViewLivePartialCtrl" ng-init="init()">
+    <div class="btn-group-tabs">
+        <button type="button" class="btn btn-success" ng-click="toggleRecording()">Start Recording</button>
+    </div>
+
+    <hr>
 
     <div class="animated bounceInRight">
         <div class="panel-inner-content">
@@ -31,7 +36,7 @@
             </div>
 
             <h5 class="static-device-status">Live View:</h5>
-            <canvas id="canvas-sandbox" class="canvas-sandbox"></canvas>
+            <canvas id="canvas-sandbox" class="canvas-live-tracking"></canvas>
         </div>
     </div>
 
