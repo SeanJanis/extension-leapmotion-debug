@@ -3,6 +3,8 @@
  * updating the AngularJS UI.
  *
  * Drawing code based on Isaac Cohen's tutorial: [http://js.leapmotion.com/tutorials/welcome]
+ *
+ * @author Sean Janis (spjanis@gmail.com)
  */
 
 //
@@ -24,7 +26,7 @@ function LeapMotionHandler(params) {
     this._lastTime = new Date;
     this._timeElapsed = 0;
     this._frameCount = 0;
-    this._fps = 0;
+    this.resetUIData();
 }
 
 LeapMotionHandler.prototype = {
@@ -48,22 +50,47 @@ LeapMotionHandler.prototype = {
     // Connection callbacks
     //
     onReady: function() {
-        this.updateStatusUI(LM_DEVICE_CONNECTED);
+        this.updateDeviceStatusUI(LM_DEVICE_CONNECTED);
     },
 
     onConnected: function() {
-        this.updateStatusUI(LM_DEVICE_DISCONNECTED);
+        this.updateDeviceStatusUI(LM_DEVICE_DISCONNECTED);
     },
 
     onDeviceConnected: function() {
-        this.updateStatusUI(LM_DEVICE_CONNECTED);
+        this.updateDeviceStatusUI(LM_DEVICE_CONNECTED);
     },
 
     onDeviceDisconnected: function() {
-        this.updateStatusUI(LM_DEVICE_DISCONNECTED);
+        this.updateDeviceStatusUI(LM_DEVICE_DISCONNECTED);
+        this.resetUIData();
     },
 
+    //
+    // Raw frame updates from Leap Motion device (JSON-based frame)
+    //
     onFrame: function(frame) {
+        this.updateLiveStats(frame);
+        this.drawLiveTracking(frame);
+        this._scope.$apply();
+    },
+
+    //
+    // Resets all UI data to their original values
+    //
+    resetUIData: function() {
+        this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
+        this._scope.lm_fps = 0;
+        this._scope.lm_numHands = 0;
+        this._scope.lm_numFingers = 0;
+        this._scope.$apply();
+    },
+
+    //
+    // Given a Leap Motion JSON-based frame, updates the live
+    // tracking data such as number of fingers, hands, etc.
+    //
+    updateLiveStats: function(frame) {
         var nowTime = new Date;
         this._timeElapsed += (nowTime - this._lastTime);
         this._lastTime = nowTime;
@@ -76,17 +103,21 @@ LeapMotionHandler.prototype = {
             this._frameCount = 0;
         }
 
-        var numFingers = frame.fingers.length;
-        this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
-        this.updateFingersUI(numFingers.toString());
-        this.processInput(frame);
+        this._scope.lm_numHands = frame.hands.length.toString();
+        this._scope.lm_numFingers = frame.fingers.length.toString();
     },
 
-    processInput: function(frame) {
+    //
+    // Takes a raw JSON-based Leap Motion frame and draws hand
+    // and finger information.
+    //
+    drawLiveTracking: function(frame) {
         var hand;
         var finger;
         var handScreenPos;
         var fingerScreenPos;
+
+        this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
         for (var i = 0; i < frame.hands.length; i++) {
             hand = frame.hands[i];
             handScreenPos = this.leapToSceneCoords(frame, hand.palmPosition);
@@ -100,6 +131,10 @@ LeapMotionHandler.prototype = {
         }
     },
 
+    //
+    // Helper method for drawing the user's hand
+    // Parameters are based on screen coordinates.
+    //
     drawHand: function(handCoords) {
         // Setting up the style for the fill
         this._context.fillStyle = "#FF5A40";
@@ -111,6 +146,10 @@ LeapMotionHandler.prototype = {
         this._context.fill();
     },
 
+    //
+    // Helper method for drawing the user's fingers.
+    // Parameters are based on screen coordinates.
+    //
     drawFinger: function(fingerCoords, handCoords) {
         // Setting up the style for the stroke
         this._context.strokeStyle = "#FFA040";
@@ -137,6 +176,11 @@ LeapMotionHandler.prototype = {
         this._context.stroke();
     },
 
+    //
+    // Converts a 3D scene coordinate into 2D coordinate
+    // space by normalizing the 3D coordinate based on the
+    // the HTML canvas bounds.
+    //
     leapToSceneCoords: function(frame, leapPos) {
         //
         var iBox = frame.interactionBox;
@@ -156,7 +200,10 @@ LeapMotionHandler.prototype = {
         return [x, -y];
     },
 
-    updateStatusUI: function(statusType) {
+    //
+    // Updates the device's main connection status.
+    //
+    updateDeviceStatusUI: function(statusType) {
         var statusText, statusCssClass;
 
         switch(statusType) {
@@ -174,15 +221,5 @@ LeapMotionHandler.prototype = {
         this._scope.deviceStatusColor = statusCssClass;
         this._scope.lm_DeviceStatus = statusText;
         this._scope.$apply();
-    },
-
-    updateFingersUI: function(dataText) {
-        this._scope.lm_numFingers = dataText;
-        this._scope.$apply();
-
-        // Draw to canvas
-//        this._context.textAlign = 'center';
-//        this._context.textBaseline = 'middle';
-//        this._context.fillText(dataText, this._canvas.width/2, this._canvas.height/2);
     }
 };
