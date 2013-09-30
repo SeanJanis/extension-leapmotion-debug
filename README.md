@@ -1,4 +1,4 @@
-LeapDebug (Google Chrome extension)
+LeapDebug (Google Chrome extension) 
 ==============
 
 Chrome extension for debugging the Leap Motion controller setup. Once installed, opens
